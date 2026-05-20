@@ -60,6 +60,15 @@ python3 scripts/verify_truefoundry_live.py
 
 These are expected to fail until a real TrueFoundry API key, virtual model, sanitized response proof, and dashboard screenshot exist.
 
+## Submission Docs
+
+- [Submission package](SUBMISSION_PACKAGE.md)
+- [Architecture](ARCHITECTURE.md)
+- [TrueFoundry integration plan](docs/TRUEFOUNDRY_INTEGRATION_PLAN.md)
+- [Devpost draft](submission/devpost-draft.md)
+- [Demo script](submission/demo-script.md)
+- [Build journey](submission/build-journey.md)
+
 ## Claim Boundary
 
 This is a local/public MVP. TrueFoundry Gateway has not been installed or called yet. The UI is shaped for that track, but no live TrueFoundry execution is claimed.
