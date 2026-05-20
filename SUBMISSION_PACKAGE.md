@@ -39,6 +39,15 @@ python3 scripts/verify_claim_boundary.py
 gateway_claim_boundary_ok
 ```
 
+Screenshots:
+
+```text
+media/resilient-agentops-gateway-full.png
+media/resilient-agentops-gateway-pages-full.png
+```
+
+Demo video: pending until the static walkthrough and any live TrueFoundry proof boundaries are final.
+
 ## Claim Boundary
 
 TrueFoundry has not been installed or called yet. This package does not claim live TrueFoundry execution.

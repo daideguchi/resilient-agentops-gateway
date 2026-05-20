@@ -20,6 +20,18 @@ GitHub Pages target:
 https://daideguchi.github.io/resilient-agentops-gateway/
 ```
 
+## Demo Media
+
+Current live screenshot:
+
+![Resilient AgentOps Gateway live screenshot](media/resilient-agentops-gateway-pages-full.png)
+
+Current local verification screenshot:
+
+![Resilient AgentOps Gateway verification screenshot](media/resilient-agentops-gateway-full.png)
+
+Demo video status: pending. Do not claim live TrueFoundry Gateway execution in the demo until sanitized response proof and dashboard proof exist.
+
 ## Verify
 
 ```bash
