@@ -46,3 +46,5 @@ TrueFoundry has not been installed or called yet. This package does not claim li
 ## Integration Plan
 
 The next live step is tracked in `docs/TRUEFOUNDRY_INTEGRATION_PLAN.md`: create a real TrueFoundry Gateway workspace/key, route one sample request through a virtual model, save dashboard or response proof under `media/`, then update the claim boundary.
+
+`scripts/truefoundry_smoke_request.py` and `scripts/verify_truefoundry_live.py` are present for that step, but the live verifier is expected to fail until real TrueFoundry proof exists.

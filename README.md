@@ -39,6 +39,15 @@ gateway_claim_boundary_ok
 
 The product is shaped for the TrueFoundry AI Gateway challenge direction, but no live TrueFoundry Gateway request has been made yet. The next integration step is documented in [docs/TRUEFOUNDRY_INTEGRATION_PLAN.md](docs/TRUEFOUNDRY_INTEGRATION_PLAN.md).
 
+Future live-proof commands:
+
+```bash
+python3 scripts/truefoundry_smoke_request.py
+python3 scripts/verify_truefoundry_live.py
+```
+
+These are expected to fail until a real TrueFoundry API key, virtual model, sanitized response proof, and dashboard screenshot exist.
+
 ## Claim Boundary
 
 This is a local/public MVP. TrueFoundry Gateway has not been installed or called yet. The UI is shaped for that track, but no live TrueFoundry execution is claimed.

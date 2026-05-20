@@ -18,6 +18,15 @@ scripts/verify_gateway.mjs
 
 scripts/verify_claim_boundary.py
   fails if docs claim live TrueFoundry Gateway proof before a real proof file exists
+
+scripts/truefoundry_smoke_request.py
+  future live smoke test
+  uses TRUEFOUNDRY_API_KEY and TRUEFOUNDRY_MODEL from env
+  writes sanitized response metadata only
+
+scripts/verify_truefoundry_live.py
+  future live-proof gate
+  fails until sanitized response proof and dashboard screenshot both exist
 ```
 
 ## Event Shape

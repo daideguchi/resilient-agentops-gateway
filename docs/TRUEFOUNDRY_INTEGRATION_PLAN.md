@@ -41,10 +41,21 @@ When the real workspace is available:
 5. Save a sanitized request / response artifact if allowed, for example `media/truefoundry-gateway-response.json`.
 6. Update README, submission package, and the app packet from "not called yet" to the real verified status.
 
-## Verification Command To Add Later
+## Smoke Request
+
+```bash
+export TRUEFOUNDRY_API_KEY="..."
+export TRUEFOUNDRY_MODEL="..."
+export TRUEFOUNDRY_BASE_URL="https://gateway.truefoundry.ai"
+python3 scripts/truefoundry_smoke_request.py
+```
+
+The smoke script writes only sanitized response metadata to `media/truefoundry-gateway-response.json`.
+
+## Live Proof Verifier
 
 ```bash
 python3 scripts/verify_truefoundry_live.py
 ```
 
-That verifier should only pass when a real Gateway proof file exists and the repo no longer relies only on the static MVP.
+This verifier is intentionally strict. It should fail until both the sanitized response proof and the real dashboard screenshot exist.
