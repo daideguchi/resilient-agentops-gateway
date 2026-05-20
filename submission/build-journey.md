@@ -22,6 +22,7 @@ Deepened the product:
 - decision contract for retry, fallback, approval, and stop rules
 - evidence receipts that separate simulated evidence from required live proof
 - live Pages screenshot proof
+- no-secrets verifier for the public repo
 - claim-boundary verifier
 - future TrueFoundry smoke request script
 - future TrueFoundry live-proof verifier

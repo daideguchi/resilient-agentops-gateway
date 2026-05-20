@@ -41,6 +41,9 @@ policy_items=4
 receipt_items=4
 python3 scripts/verify_claim_boundary.py
 gateway_claim_boundary_ok
+
+python3 scripts/verify_no_secrets.py
+gateway_no_secrets_ok
 ```
 
 Screenshots:
