@@ -32,11 +32,20 @@ Current local verification screenshot:
 
 Demo video status: pending. Do not claim live TrueFoundry Gateway execution in the demo until sanitized response proof and dashboard proof exist.
 
+Current local demo video:
+
+```text
+media/resilient-agentops-gateway-demo.mp4
+```
+
+This is a generated narration draft for review. It does not claim live TrueFoundry Gateway execution.
+
 ## Verify
 
 ```bash
 node scripts/verify_gateway.mjs
 python3 scripts/verify_claim_boundary.py
+python3 scripts/verify_demo_video.py
 ```
 
 Expected:
@@ -45,6 +54,7 @@ Expected:
 gateway_verify_ok
 track_fit_items=4
 gateway_claim_boundary_ok
+gateway_demo_video_ok
 ```
 
 ## TrueFoundry Status

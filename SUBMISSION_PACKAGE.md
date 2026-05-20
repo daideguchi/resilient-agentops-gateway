@@ -48,6 +48,14 @@ media/resilient-agentops-gateway-pages-full.png
 
 Demo video: pending until the static walkthrough and any live TrueFoundry proof boundaries are final.
 
+Demo video draft:
+
+```text
+media/resilient-agentops-gateway-demo.mp4
+```
+
+This draft does not claim live TrueFoundry Gateway execution.
+
 ## Claim Boundary
 
 TrueFoundry has not been installed or called yet. This package does not claim live TrueFoundry execution.
