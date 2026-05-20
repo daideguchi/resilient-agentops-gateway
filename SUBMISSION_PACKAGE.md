@@ -24,6 +24,7 @@ Resilient AgentOps Gateway turns agent execution into a reviewable operations vi
 - evidence reference
 - final handoff status
 - decision contract for retry, fallback, approval, and stop rules
+- Gateway I/O contract for request, route decision, response, and audit receipt
 - evidence receipts that separate simulated proof from blocked live TrueFoundry proof
 - TrueFoundry challenge-fit summary for routing, fallback, governance, and evidence
 
@@ -39,6 +40,7 @@ gateway_verify_ok
 track_fit_items=4
 policy_items=4
 receipt_items=4
+contract_items=4
 python3 scripts/verify_claim_boundary.py
 gateway_claim_boundary_ok
 

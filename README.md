@@ -22,7 +22,7 @@ The problem: when an agent fails, retries, changes model, spends money, or needs
 
 How Resilient AgentOps Gateway solves it: the cockpit shows route decisions, fallback, risk, cost, approval gates, evidence receipts, and the handoff packet in one reviewable surface.
 
-What is proven now: the public app, screenshots, demo video draft, verifiers, decision contract, and evidence receipts are live. TrueFoundry execution is intentionally not claimed until a real Gateway response and dashboard proof exist.
+What is proven now: the public app, screenshots, demo video draft, verifiers, decision contract, Gateway I/O contract, and evidence receipts are live. TrueFoundry execution is intentionally not claimed until a real Gateway response and dashboard proof exist.
 
 ## Live Demo
 
@@ -74,6 +74,7 @@ gateway_verify_ok
 track_fit_items=4
 policy_items=4
 receipt_items=4
+contract_items=4
 gateway_no_secrets_ok
 gateway_claim_boundary_ok
 gateway_demo_video_ok
@@ -97,6 +98,7 @@ These are expected to fail until a real TrueFoundry API key, virtual model, sani
 - [Submission package](SUBMISSION_PACKAGE.md)
 - [Architecture](ARCHITECTURE.md)
 - [TrueFoundry integration plan](docs/TRUEFOUNDRY_INTEGRATION_PLAN.md)
+- [Gateway I/O contract](docs/GATEWAY_IO_CONTRACT.md)
 - [Devpost draft](submission/devpost-draft.md)
 - [Demo script](submission/demo-script.md)
 - [Build journey](submission/build-journey.md)

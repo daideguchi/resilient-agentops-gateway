@@ -32,6 +32,10 @@ try {
   if (receiptItems < 4) {
     throw new Error(`evidence receipts missing: ${receiptItems}`);
   }
+  const contractItems = await page.locator('.contract-item').count();
+  if (contractItems < 4) {
+    throw new Error(`gateway I/O contract missing: ${contractItems}`);
+  }
   const packet = JSON.parse(await page.locator('#packet').innerText());
   if (packet.claim_boundary !== 'No live TrueFoundry Gateway execution is claimed yet.') {
     throw new Error('claim boundary mismatch');
@@ -41,6 +45,9 @@ try {
   }
   if (!Array.isArray(packet.decision_contract) || packet.decision_contract.length < 4) {
     throw new Error('decision contract packet missing');
+  }
+  if (!Array.isArray(packet.gateway_io_contract) || !packet.gateway_io_contract.some((item) => item.name === 'Audit receipt')) {
+    throw new Error('gateway I/O contract packet missing');
   }
   if (!Array.isArray(packet.evidence_receipts) || !packet.evidence_receipts.some((item) => item.name === 'TrueFoundry receipt' && item.status === 'blocked')) {
     throw new Error('TrueFoundry evidence boundary missing');
@@ -55,6 +62,7 @@ try {
   console.log(`track_fit_items=${fitItems}`);
   console.log(`policy_items=${policyItems}`);
   console.log(`receipt_items=${receiptItems}`);
+  console.log(`contract_items=${contractItems}`);
   console.log(`bytes=${bytes}`);
 } finally {
   await browser.close();

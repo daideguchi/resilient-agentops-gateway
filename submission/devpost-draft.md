@@ -24,12 +24,13 @@ Resilient AgentOps Gateway turns agent execution into a reviewable operations su
 - evidence reference
 - final handoff packet
 - decision contract for retry, fallback, approval, and stop rules
+- Gateway I/O contract for request, route decision, response, and audit receipt
 - evidence receipts that show what is simulated and what still needs live proof
 - TrueFoundry challenge-fit summary
 
 ## How We Built It
 
-The current MVP is a static, deterministic gateway cockpit deployed on GitHub Pages. It includes a sample event model, a fallback timeline, a handoff packet, a decision contract, evidence receipts, public screenshots, Playwright verification, and strict claim-boundary scripts.
+The current MVP is a static, deterministic gateway cockpit deployed on GitHub Pages. It includes a sample event model, a fallback timeline, a handoff packet, a decision contract, a Gateway I/O contract, evidence receipts, public screenshots, Playwright verification, and strict claim-boundary scripts.
 
 ## Links
 
@@ -41,7 +42,7 @@ The current MVP is a static, deterministic gateway cockpit deployed on GitHub Pa
 
 ## Built With
 
-HTML, CSS, JavaScript, Playwright, GitHub Pages, Python verification scripts
+HTML, CSS, JavaScript, Playwright, GitHub Pages, Python verification scripts, Gateway I/O contract
 
 ## What Is Still Needed Before Final Submission
 

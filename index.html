@@ -147,7 +147,7 @@
       margin-top: 12px;
     }
 
-    .fit-item, .policy-item, .receipt-item {
+    .fit-item, .policy-item, .receipt-item, .contract-item {
       border: 1px solid var(--line);
       border-radius: 8px;
       background: #fbfdff;
@@ -155,13 +155,13 @@
       min-height: 116px;
     }
 
-    .fit-item b, .policy-item b, .receipt-item b {
+    .fit-item b, .policy-item b, .receipt-item b, .contract-item b {
       display: block;
       font-size: 13px;
       margin-bottom: 4px;
     }
 
-    .fit-item p, .policy-item p, .receipt-item p {
+    .fit-item p, .policy-item p, .receipt-item p, .contract-item p {
       margin: 0;
       font-size: 13px;
     }
@@ -225,6 +225,12 @@
       <h2>Decision Contract</h2>
       <p>The gateway makes the agent's operating rules explicit before a risky action happens.</p>
       <div class="fit-grid" id="policyGrid"></div>
+    </section>
+
+    <section>
+      <h2>Gateway I/O Contract</h2>
+      <p>A resilient agent gateway should expose the request, route decision, response, and audit receipt so the next operator can replay the decision.</p>
+      <div class="fit-grid" id="contractGrid"></div>
     </section>
 
     <div class="grid">
@@ -294,6 +300,13 @@
       { name: 'TrueFoundry receipt', status: 'blocked', note: 'Replace with sanitized live Gateway response before claiming execution.' }
     ];
 
+    const contract = [
+      { name: 'Request', status: 'defined', note: 'Task, risk class, budget limit, and evidence requirement enter the gateway.' },
+      { name: 'Route decision', status: 'defined', note: 'Primary model, fallback model, retry rule, and stop rule are recorded.' },
+      { name: 'Response', status: 'defined', note: 'Final output includes answer, confidence, cost, approvals, and blocked actions.' },
+      { name: 'Audit receipt', status: 'required', note: 'Each run must produce a replayable receipt before production trust is claimed.' }
+    ];
+
     function statusBadge(status) {
       const cls = status === 'ok' ? 'green' : status === 'blocked' ? 'red' : 'amber';
       return `<span class="badge ${cls}">${status}</span>`;
@@ -330,12 +343,20 @@
         <p>${item.note}</p>
       </div>
     `).join('');
+    document.getElementById('contractGrid').innerHTML = contract.map((item) => `
+      <div class="contract-item">
+        <b>${item.name}</b>
+        <span class="badge ${item.status === 'required' ? 'amber' : 'blue'}">${item.status}</span>
+        <p>${item.note}</p>
+      </div>
+    `).join('');
 
     const packet = {
       product: 'Resilient AgentOps Gateway',
       track: 'DevNetwork AI+ML / TrueFoundry resilient agents',
       track_fit: fit,
       decision_contract: policy,
+      gateway_io_contract: contract,
       evidence_receipts: receipts,
       fallback_count: events.filter((event) => event.status === 'fallback_used').length,
       blocked_actions: events.filter((event) => event.status === 'blocked').length,

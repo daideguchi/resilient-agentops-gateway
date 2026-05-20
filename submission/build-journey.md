@@ -20,6 +20,7 @@ Deepened the product:
 - TrueFoundry Challenge Fit section
 - mobile-safe timeline cards
 - decision contract for retry, fallback, approval, and stop rules
+- Gateway I/O contract for replayable request, route, response, and audit receipt
 - evidence receipts that separate simulated evidence from required live proof
 - live Pages screenshot proof
 - no-secrets verifier for the public repo
