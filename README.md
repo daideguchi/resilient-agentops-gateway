@@ -22,13 +22,19 @@ https://daideguchi.github.io/resilient-agentops-gateway/
 
 ```bash
 node scripts/verify_gateway.mjs
+python3 scripts/verify_claim_boundary.py
 ```
 
 Expected:
 
 ```text
 gateway_verify_ok
+gateway_claim_boundary_ok
 ```
+
+## TrueFoundry Status
+
+The product is shaped for the TrueFoundry AI Gateway challenge direction, but no live TrueFoundry Gateway request has been made yet. The next integration step is documented in [docs/TRUEFOUNDRY_INTEGRATION_PLAN.md](docs/TRUEFOUNDRY_INTEGRATION_PLAN.md).
 
 ## Claim Boundary
 

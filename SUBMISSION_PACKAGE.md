@@ -33,8 +33,14 @@ The best fit is the TrueFoundry resilient-agents challenge because the product i
 ```text
 node scripts/verify_gateway.mjs
 gateway_verify_ok
+python3 scripts/verify_claim_boundary.py
+gateway_claim_boundary_ok
 ```
 
 ## Claim Boundary
 
 TrueFoundry has not been installed or called yet. This package does not claim live TrueFoundry execution.
+
+## Integration Plan
+
+The next live step is tracked in `docs/TRUEFOUNDRY_INTEGRATION_PLAN.md`: create a real TrueFoundry Gateway workspace/key, route one sample request through a virtual model, save dashboard or response proof under `media/`, then update the claim boundary.

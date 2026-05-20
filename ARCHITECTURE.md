@@ -13,6 +13,9 @@ scripts/verify_gateway.mjs
   opens the app in Chrome
   verifies headline, timeline rows, fallback row, and claim boundary
   captures screenshot
+
+scripts/verify_claim_boundary.py
+  fails if docs claim live TrueFoundry Gateway proof before a real proof file exists
 ```
 
 ## Event Shape
@@ -36,3 +39,5 @@ scripts/verify_gateway.mjs
 - route one real sample LLM call through it
 - export request/response/fallback proof
 - update README and verifier
+
+Detailed account and proof steps are in `docs/TRUEFOUNDRY_INTEGRATION_PLAN.md`.
