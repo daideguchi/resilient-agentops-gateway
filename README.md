@@ -38,6 +38,12 @@ Current local demo video:
 media/resilient-agentops-gateway-demo.mp4
 ```
 
+Raw demo video URL:
+
+```text
+https://raw.githubusercontent.com/daideguchi/resilient-agentops-gateway/main/media/resilient-agentops-gateway-demo.mp4
+```
+
 This is a generated narration draft for review. It does not claim live TrueFoundry Gateway execution.
 
 ## Verify

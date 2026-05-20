@@ -52,6 +52,7 @@ Demo video draft:
 
 ```text
 media/resilient-agentops-gateway-demo.mp4
+https://raw.githubusercontent.com/daideguchi/resilient-agentops-gateway/main/media/resilient-agentops-gateway-demo.mp4
 ```
 
 This draft does not claim live TrueFoundry Gateway execution.

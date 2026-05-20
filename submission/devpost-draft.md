@@ -35,6 +35,7 @@ The current MVP is a static, deterministic gateway cockpit deployed on GitHub Pa
 - GitHub: https://github.com/daideguchi/resilient-agentops-gateway
 - Submission package: https://raw.githubusercontent.com/daideguchi/resilient-agentops-gateway/main/SUBMISSION_PACKAGE.md
 - Screenshot: https://raw.githubusercontent.com/daideguchi/resilient-agentops-gateway/main/media/resilient-agentops-gateway-pages-full.png
+- Demo video draft: https://raw.githubusercontent.com/daideguchi/resilient-agentops-gateway/main/media/resilient-agentops-gateway-demo.mp4
 
 ## Built With
 
@@ -46,7 +47,7 @@ HTML, CSS, JavaScript, Playwright, GitHub Pages, Python verification scripts
 - Route one safe smoke request through the Gateway.
 - Save sanitized response proof.
 - Capture dashboard proof.
-- Record the demo video.
+- Listen to and approve the generated demo video draft, then upload the final public video if Devpost requires a hosted player.
 - DD must approve legal terms and final submission.
 
 ## Claim Boundary
