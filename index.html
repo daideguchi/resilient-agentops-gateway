@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resilient AgentOps Gateway</title>
+  <style>
+    :root {
+      --bg: #f5f7f9;
+      --surface: #fff;
+      --ink: #17202a;
+      --muted: #5f6f80;
+      --line: #d8e1ea;
+      --blue: #225d8d;
+      --green: #1d7a50;
+      --amber: #985f09;
+      --red: #a43b30;
+      --blue-soft: #e7f1fa;
+      --green-soft: #e7f6ee;
+      --amber-soft: #fff1d2;
+      --red-soft: #fae8e5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      gap: 16px;
+    }
+
+    header, section {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    h1, h2 {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    h1 { font-size: 28px; line-height: 1.1; }
+    h2 { font-size: 18px; }
+
+    p { margin: 8px 0 0; color: var(--muted); }
+
+    .badge {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 12px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .green { background: var(--green-soft); color: var(--green); }
+    .amber { background: var(--amber-soft); color: var(--amber); }
+    .red { background: var(--red-soft); color: var(--red); }
+    .blue { background: var(--blue-soft); color: var(--blue); }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fbfdff;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+      gap: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .packet {
+      background: #10202e;
+      color: #eaf2f8;
+      border-radius: 8px;
+      padding: 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      min-height: 290px;
+      white-space: pre-wrap;
+      overflow: auto;
+    }
+
+    @media (max-width: 860px) {
+      header { flex-direction: column; }
+      .metrics, .grid { grid-template-columns: 1fr; }
+      table { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>Resilient AgentOps Gateway</h1>
+        <p>A review cockpit for model fallback, risk, cost, approval, and evidence.</p>
+      </div>
+      <span class="badge amber">TrueFoundry integration pending</span>
+    </header>
+
+    <section class="metrics" aria-label="Gateway metrics">
+      <div class="metric"><strong id="fallbackCount">2</strong><span>fallbacks used</span></div>
+      <div class="metric"><strong id="approvalCount">2</strong><span>human approvals</span></div>
+      <div class="metric"><strong id="costTotal">$0.07</strong><span>estimated cost</span></div>
+      <div class="metric"><strong id="blockedCount">1</strong><span>blocked actions</span></div>
+    </section>
+
+    <div class="grid">
+      <section>
+        <h2>Gateway Timeline</h2>
+        <p>Each row explains why the agent stayed on the primary path, used fallback, required approval, or stopped.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Primary</th>
+              <th>Fallback</th>
+              <th>Status</th>
+              <th>Risk</th>
+              <th>Approval</th>
+            </tr>
+          </thead>
+          <tbody id="timeline"></tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Handoff Packet</h2>
+        <p>The next human or agent can resume without guessing what happened.</p>
+        <pre class="packet" id="packet"></pre>
+      </section>
+    </div>
+
+    <section>
+      <h2>Claim Boundary</h2>
+      <p id="boundary">This MVP is shaped for a TrueFoundry resilient-agents submission, but no live TrueFoundry Gateway execution is claimed yet.</p>
+    </section>
+  </main>
+
+  <script>
+    const events = [
+      { step: 'intake', primary: 'fast-model', fallback: '-', status: 'ok', risk: 'low context', approval: 'not required', cost: 0.006, evidence: 'case-intake' },
+      { step: 'retrieval', primary: 'fast-model', fallback: 'reasoning-model', status: 'fallback_used', risk: 'missing evidence', approval: 'not required', cost: 0.018, evidence: 'kb-ticket-1842' },
+      { step: 'refund action', primary: 'action-agent', fallback: 'human review', status: 'blocked', risk: 'customer credit action', approval: 'required', cost: 0.011, evidence: 'policy-refund-7' },
+      { step: 'summary', primary: 'fast-model', fallback: 'reasoning-model', status: 'fallback_used', risk: 'unsupported claim', approval: 'required', cost: 0.032, evidence: 'case-summary' }
+    ];
+
+    function statusBadge(status) {
+      const cls = status === 'ok' ? 'green' : status === 'blocked' ? 'red' : 'amber';
+      return `<span class="badge ${cls}">${status}</span>`;
+    }
+
+    document.getElementById('timeline').innerHTML = events.map((event) => `
+      <tr>
+        <td>${event.step}</td>
+        <td>${event.primary}</td>
+        <td>${event.fallback}</td>
+        <td>${statusBadge(event.status)}</td>
+        <td>${event.risk}</td>
+        <td>${event.approval}</td>
+      </tr>
+    `).join('');
+
+    const packet = {
+      product: 'Resilient AgentOps Gateway',
+      track: 'DevNetwork AI+ML / TrueFoundry resilient agents',
+      fallback_count: events.filter((event) => event.status === 'fallback_used').length,
+      blocked_actions: events.filter((event) => event.status === 'blocked').length,
+      approvals_required: events.filter((event) => event.approval === 'required').length,
+      estimated_cost_usd: events.reduce((sum, event) => sum + event.cost, 0).toFixed(3),
+      resume_instruction: 'Review blocked refund action before any customer-facing action.',
+      claim_boundary: 'No live TrueFoundry Gateway execution is claimed yet.'
+    };
+
+    document.getElementById('fallbackCount').textContent = String(packet.fallback_count);
+    document.getElementById('approvalCount').textContent = String(packet.approvals_required);
+    document.getElementById('blockedCount').textContent = String(packet.blocked_actions);
+    document.getElementById('costTotal').textContent = `$${packet.estimated_cost_usd}`;
+    document.getElementById('packet').textContent = JSON.stringify(packet, null, 2);
+  </script>
+</body>
+</html>
