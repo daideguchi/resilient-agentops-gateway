@@ -24,6 +24,7 @@ Deepened the product:
 - evidence receipts that separate simulated evidence from required live proof
 - live Pages screenshot proof
 - no-secrets verifier for the public repo
+- README review-hub verifier for public submission completeness
 - claim-boundary verifier
 - future TrueFoundry smoke request script
 - future TrueFoundry live-proof verifier

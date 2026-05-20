@@ -46,6 +46,9 @@ gateway_claim_boundary_ok
 
 python3 scripts/verify_no_secrets.py
 gateway_no_secrets_ok
+
+python3 scripts/verify_readme_review_hub.py
+gateway_readme_review_hub_ok
 ```
 
 Screenshots:

@@ -63,6 +63,7 @@ This is a generated narration draft for review. It does not claim live TrueFound
 ```bash
 node scripts/verify_gateway.mjs
 python3 scripts/verify_no_secrets.py
+python3 scripts/verify_readme_review_hub.py
 python3 scripts/verify_claim_boundary.py
 python3 scripts/verify_demo_video.py
 ```
@@ -76,6 +77,7 @@ policy_items=4
 receipt_items=4
 contract_items=4
 gateway_no_secrets_ok
+gateway_readme_review_hub_ok
 gateway_claim_boundary_ok
 gateway_demo_video_ok
 ```
