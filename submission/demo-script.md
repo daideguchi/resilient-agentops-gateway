@@ -24,12 +24,12 @@ At the top, the moderator or operator can see fallbacks used, approvals required
 
 ## 0:35 - 0:55
 
-Show TrueFoundry Challenge Fit.
+Show TrueFoundry Challenge Fit and Decision Contract.
 
 Narration:
 
 ```text
-The product is built around the TrueFoundry-style gateway story: routing, fallback, governance, and evidence. It is not claiming a live Gateway call yet. It is showing the cockpit that a real resilient-agent workflow needs.
+The product is built around the TrueFoundry-style gateway story: routing, fallback, governance, and evidence. The decision contract makes the operating rules explicit: retry, fallback, approval, or stop. It is not claiming a live Gateway call yet. It is showing the cockpit that a real resilient-agent workflow needs.
 ```
 
 ## 0:55 - 1:20
@@ -44,12 +44,12 @@ Each step explains which model or tool path was tried, whether fallback was used
 
 ## 1:20 - 1:45
 
-Show the handoff packet.
+Show the handoff packet and evidence receipts.
 
 Narration:
 
 ```text
-The handoff packet lets the next human or agent resume without guessing. It includes fallback count, blocked actions, approvals, cost, and the exact claim boundary.
+The handoff packet lets the next human or agent resume without guessing. It includes fallback count, blocked actions, approvals, cost, decision rules, evidence receipts, and the exact claim boundary.
 ```
 
 ## 1:45 - 2:00

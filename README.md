@@ -12,6 +12,8 @@ Resilient AgentOps Gateway is a dashboard for understanding how an AI workflow b
 
 It is designed to make the TrueFoundry-style operations story visible: routing, fallback, governance, evidence, cost, and resume instructions.
 
+The latest surface also includes an explicit decision contract and evidence receipts, so a reviewer can see when the gateway retries, when it falls back, when it pauses for human approval, and which proof is still simulated versus blocked.
+
 ## Live Demo
 
 GitHub Pages target:
@@ -59,6 +61,8 @@ Expected:
 ```text
 gateway_verify_ok
 track_fit_items=4
+policy_items=4
+receipt_items=4
 gateway_claim_boundary_ok
 gateway_demo_video_ok
 ```

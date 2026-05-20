@@ -135,6 +135,7 @@
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 12px;
       min-height: 290px;
+      max-height: 520px;
       white-space: pre-wrap;
       overflow: auto;
     }
@@ -146,7 +147,7 @@
       margin-top: 12px;
     }
 
-    .fit-item {
+    .fit-item, .policy-item, .receipt-item {
       border: 1px solid var(--line);
       border-radius: 8px;
       background: #fbfdff;
@@ -154,13 +155,13 @@
       min-height: 116px;
     }
 
-    .fit-item b {
+    .fit-item b, .policy-item b, .receipt-item b {
       display: block;
       font-size: 13px;
       margin-bottom: 4px;
     }
 
-    .fit-item p {
+    .fit-item p, .policy-item p, .receipt-item p {
       margin: 0;
       font-size: 13px;
     }
@@ -220,6 +221,12 @@
       <div class="fit-grid" id="fitGrid"></div>
     </section>
 
+    <section>
+      <h2>Decision Contract</h2>
+      <p>The gateway makes the agent's operating rules explicit before a risky action happens.</p>
+      <div class="fit-grid" id="policyGrid"></div>
+    </section>
+
     <div class="grid">
       <section>
         <h2>Gateway Timeline</h2>
@@ -247,6 +254,12 @@
     </div>
 
     <section>
+      <h2>Evidence Receipts</h2>
+      <p>Each receipt explains what can be replayed, what is still simulated, and what must be replaced by live TrueFoundry proof.</p>
+      <div class="fit-grid" id="receiptGrid"></div>
+    </section>
+
+    <section>
       <h2>Claim Boundary</h2>
       <p id="boundary">This MVP is shaped for a TrueFoundry resilient-agents submission, but no live TrueFoundry Gateway execution is claimed yet.</p>
     </section>
@@ -265,6 +278,20 @@
       { name: 'Fallback', note: 'Fallback use is visible instead of hidden inside logs or a final answer.' },
       { name: 'Governance', note: 'Risky actions stop at a human approval checkpoint.' },
       { name: 'Evidence', note: 'The handoff packet tells the next human or agent what proof exists.' }
+    ];
+
+    const policy = [
+      { name: 'Retry', trigger: 'temporary timeout or rate limit', action: 'retry once with same route', owner: 'gateway' },
+      { name: 'Fallback', trigger: 'missing evidence or weak confidence', action: 'route to reasoning model', owner: 'gateway' },
+      { name: 'Approval', trigger: 'customer-facing or money-moving action', action: 'pause for human decision', owner: 'human operator' },
+      { name: 'Stop', trigger: 'unsupported claim or policy conflict', action: 'block output and write receipt', owner: 'human operator' }
+    ];
+
+    const receipts = [
+      { name: 'Route receipt', status: 'simulated', note: 'Primary and fallback paths are visible in the timeline.' },
+      { name: 'Policy receipt', status: 'attached', note: 'Blocked refund action has a named stop rule and approval owner.' },
+      { name: 'Cost receipt', status: 'estimated', note: 'Per-step cost is included so operators can review spend impact.' },
+      { name: 'TrueFoundry receipt', status: 'blocked', note: 'Replace with sanitized live Gateway response before claiming execution.' }
     ];
 
     function statusBadge(status) {
@@ -288,16 +315,34 @@
         <p>${item.note}</p>
       </div>
     `).join('');
+    document.getElementById('policyGrid').innerHTML = policy.map((item) => `
+      <div class="policy-item">
+        <b>${item.name}</b>
+        <span class="badge ${item.name === 'Stop' ? 'red' : item.name === 'Approval' ? 'amber' : 'blue'}">${item.owner}</span>
+        <p><strong>Trigger:</strong> ${item.trigger}</p>
+        <p><strong>Action:</strong> ${item.action}</p>
+      </div>
+    `).join('');
+    document.getElementById('receiptGrid').innerHTML = receipts.map((item) => `
+      <div class="receipt-item">
+        <b>${item.name}</b>
+        <span class="badge ${item.status === 'attached' ? 'green' : item.status === 'blocked' ? 'red' : 'amber'}">${item.status}</span>
+        <p>${item.note}</p>
+      </div>
+    `).join('');
 
     const packet = {
       product: 'Resilient AgentOps Gateway',
       track: 'DevNetwork AI+ML / TrueFoundry resilient agents',
       track_fit: fit,
+      decision_contract: policy,
+      evidence_receipts: receipts,
       fallback_count: events.filter((event) => event.status === 'fallback_used').length,
       blocked_actions: events.filter((event) => event.status === 'blocked').length,
       approvals_required: events.filter((event) => event.approval === 'required').length,
       estimated_cost_usd: events.reduce((sum, event) => sum + event.cost, 0).toFixed(3),
       resume_instruction: 'Review blocked refund action before any customer-facing action.',
+      next_live_proof_step: 'Run one small request through a real TrueFoundry virtual model and attach sanitized response plus dashboard proof.',
       claim_boundary: 'No live TrueFoundry Gateway execution is claimed yet.'
     };
 

@@ -24,12 +24,26 @@ try {
   if (fitItems < 4) {
     throw new Error(`track fit items missing: ${fitItems}`);
   }
+  const policyItems = await page.locator('.policy-item').count();
+  if (policyItems < 4) {
+    throw new Error(`decision contract missing: ${policyItems}`);
+  }
+  const receiptItems = await page.locator('.receipt-item').count();
+  if (receiptItems < 4) {
+    throw new Error(`evidence receipts missing: ${receiptItems}`);
+  }
   const packet = JSON.parse(await page.locator('#packet').innerText());
   if (packet.claim_boundary !== 'No live TrueFoundry Gateway execution is claimed yet.') {
     throw new Error('claim boundary mismatch');
   }
   if (!Array.isArray(packet.track_fit) || packet.track_fit.length < 4) {
     throw new Error('track fit packet missing');
+  }
+  if (!Array.isArray(packet.decision_contract) || packet.decision_contract.length < 4) {
+    throw new Error('decision contract packet missing');
+  }
+  if (!Array.isArray(packet.evidence_receipts) || !packet.evidence_receipts.some((item) => item.name === 'TrueFoundry receipt' && item.status === 'blocked')) {
+    throw new Error('TrueFoundry evidence boundary missing');
   }
   await page.screenshot({ path: path.join(outDir, 'resilient-agentops-gateway-full.png'), fullPage: true });
   const bytes = fs.statSync(path.join(outDir, 'resilient-agentops-gateway-full.png')).size;
@@ -39,6 +53,8 @@ try {
   console.log('gateway_verify_ok');
   console.log(`fallback_rows=${fallbackRows}`);
   console.log(`track_fit_items=${fitItems}`);
+  console.log(`policy_items=${policyItems}`);
+  console.log(`receipt_items=${receiptItems}`);
   console.log(`bytes=${bytes}`);
 } finally {
   await browser.close();

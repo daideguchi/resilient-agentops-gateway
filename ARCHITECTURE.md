@@ -8,12 +8,16 @@ index.html
   deterministic sample event model
   route/fallback/cost/risk/approval cards
   TrueFoundry challenge-fit summary
+  decision contract renderer
+  evidence receipts renderer
   timeline and final handoff packet
 
 scripts/verify_gateway.mjs
   opens the app in Chrome
   verifies headline, timeline rows, fallback row, and claim boundary
   verifies challenge-fit rows
+  verifies decision-contract rows
+  verifies evidence receipts, including blocked live TrueFoundry receipt
   captures screenshot
 
 scripts/verify_claim_boundary.py
@@ -41,6 +45,27 @@ scripts/verify_truefoundry_live.py
   "cost_usd": 0.018,
   "approval": "required",
   "evidence": "kb-ticket-1842"
+}
+```
+
+## Decision Contract Shape
+
+```json
+{
+  "name": "Fallback",
+  "trigger": "missing evidence or weak confidence",
+  "action": "route to reasoning model",
+  "owner": "gateway"
+}
+```
+
+## Evidence Receipt Shape
+
+```json
+{
+  "name": "TrueFoundry receipt",
+  "status": "blocked",
+  "note": "Replace with sanitized live Gateway response before claiming execution."
 }
 ```
 

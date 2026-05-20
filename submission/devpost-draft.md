@@ -23,6 +23,8 @@ Resilient AgentOps Gateway turns agent execution into a reviewable operations su
 - human approval checkpoint
 - evidence reference
 - final handoff packet
+- decision contract for retry, fallback, approval, and stop rules
+- evidence receipts that show what is simulated and what still needs live proof
 - TrueFoundry challenge-fit summary
 
 ## How We Built It

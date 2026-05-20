@@ -57,11 +57,13 @@ At the top, the operator can see fallbacks used, approvals required, estimated c
 
 The product is built around the TrueFoundry-style gateway story: routing, fallback, governance, and evidence.
 
+The decision contract makes the operating rules explicit: retry, fallback, approval, or stop.
+
 Each timeline row explains which model or tool path was tried, whether fallback was used, what risk was found, and whether human approval was required.
 
 In this example, a risky refund action is blocked. The system does not hide that behind a polished final answer.
 
-The handoff packet lets the next human or future agent resume without guessing. It includes fallback count, blocked actions, approvals, cost, and the exact claim boundary.
+The handoff packet and evidence receipts let the next human or future agent resume without guessing. They include fallback count, blocked actions, approvals, cost, decision rules, simulated proof, blocked proof, and the exact claim boundary.
 
 The next step is one real TrueFoundry Gateway smoke request and dashboard proof. Until then, the project keeps the boundary visible and machine-checkable.
 TEXT
@@ -85,9 +87,9 @@ make_screenshot_slide "$ROOT/media/resilient-agentops-gateway-pages-full.png" \
   "$TMP_DIR/slide-1.png"
 
 make_screenshot_slide "$ROOT/media/resilient-agentops-gateway-pages-full.png" \
-  "TrueFoundry Challenge Fit" \
-  "Routing, fallback, governance, and evidence are first-class concepts." \
-  "2 / 6  Sponsor fit" \
+  "Fit And Decision Contract" \
+  "Routing, fallback, approval, and stop rules are visible before risky work happens." \
+  "2 / 6  Sponsor fit plus operating rules" \
   "$TMP_DIR/slide-2.png"
 
 make_screenshot_slide "$ROOT/media/resilient-agentops-gateway-pages-full.png" \
@@ -103,8 +105,8 @@ make_screenshot_slide "$ROOT/media/resilient-agentops-gateway-pages-full.png" \
   "$TMP_DIR/slide-4.png"
 
 make_screenshot_slide "$ROOT/media/resilient-agentops-gateway-full.png" \
-  "Handoff Packet" \
-  "The next human or future agent can resume from structured evidence." \
+  "Handoff And Receipts" \
+  "The next human or future agent can resume from decision rules and evidence receipts." \
   "5 / 6  Resumable operations" \
   "$TMP_DIR/slide-5.png"
 
