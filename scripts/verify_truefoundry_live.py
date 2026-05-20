@@ -37,6 +37,8 @@ def main() -> int:
                 failures.append("response proof must set sanitized=true")
             if data.get("gateway_base_url") != "https://gateway.truefoundry.ai":
                 failures.append("response proof must use https://gateway.truefoundry.ai")
+            if data.get("endpoint_path") not in {"/chat/completions", "/v1/chat/completions"}:
+                failures.append("response proof endpoint_path must be a TrueFoundry OpenAI-compatible chat endpoint")
             if not data.get("response_id"):
                 failures.append("response proof missing response_id")
 

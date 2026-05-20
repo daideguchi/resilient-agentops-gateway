@@ -12,6 +12,7 @@ Resilient AgentOps Gateway is currently a public MVP that demonstrates the revie
 - TrueFoundry virtual models support routing across target models with load balancing, failover, retries, and fallback behavior behind one stable model name.
 - TrueFoundry documents priority-based routing, latency-based routing, unhealthy target handling, and dashboard visibility for target traffic.
 - TrueFoundry documents a global Gateway endpoint at `https://gateway.truefoundry.ai` for AI Model Gateway and MCP Gateway traffic.
+- TrueFoundry's OpenAI-compatible chat route is `POST /chat/completions` under the Gateway base URL. The local smoke script keeps the endpoint path overridable, but defaults to the current documented path.
 
 Source links:
 
@@ -47,6 +48,8 @@ When the real workspace is available:
 export TRUEFOUNDRY_API_KEY="..."
 export TRUEFOUNDRY_MODEL="..."
 export TRUEFOUNDRY_BASE_URL="https://gateway.truefoundry.ai"
+# Optional override only if the workspace docs show a different OpenAI-compatible path:
+# export TRUEFOUNDRY_ENDPOINT_PATH="/chat/completions"
 python3 scripts/truefoundry_smoke_request.py
 ```
 

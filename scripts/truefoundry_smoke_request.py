@@ -27,7 +27,10 @@ def main() -> int:
     api_key = env("TRUEFOUNDRY_API_KEY")
     model = env("TRUEFOUNDRY_MODEL")
     base_url = os.environ.get("TRUEFOUNDRY_BASE_URL", "https://gateway.truefoundry.ai").rstrip("/")
-    endpoint = f"{base_url}/v1/chat/completions"
+    endpoint_path = os.environ.get("TRUEFOUNDRY_ENDPOINT_PATH", "/chat/completions").strip()
+    if not endpoint_path.startswith("/"):
+        endpoint_path = f"/{endpoint_path}"
+    endpoint = f"{base_url}{endpoint_path}"
 
     payload = {
         "model": model,
@@ -72,7 +75,7 @@ def main() -> int:
         "claim_boundary": "live_truefoundry_gateway_execution_response_captured_dashboard_screenshot_still_required",
         "checked_at_utc": datetime.now(timezone.utc).isoformat(),
         "gateway_base_url": base_url,
-        "endpoint_path": "/v1/chat/completions",
+        "endpoint_path": endpoint_path,
         "model": model,
         "status": status,
         "response_id": parsed.get("id"),
