@@ -29,7 +29,7 @@ Resilient AgentOps Gateway turns agent execution into a reviewable operations su
 
 ## How We Built It
 
-The current MVP is a static, deterministic gateway cockpit deployed on GitHub Pages. It includes a sample event model, a fallback timeline, a handoff packet, public screenshots, Playwright verification, and strict claim-boundary scripts.
+The current MVP is a static, deterministic gateway cockpit deployed on GitHub Pages. It includes a sample event model, a fallback timeline, a handoff packet, a decision contract, evidence receipts, public screenshots, Playwright verification, and strict claim-boundary scripts.
 
 ## Links
 

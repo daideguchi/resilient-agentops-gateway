@@ -19,10 +19,13 @@ Deepened the product:
 
 - TrueFoundry Challenge Fit section
 - mobile-safe timeline cards
+- decision contract for retry, fallback, approval, and stop rules
+- evidence receipts that separate simulated evidence from required live proof
 - live Pages screenshot proof
 - claim-boundary verifier
 - future TrueFoundry smoke request script
 - future TrueFoundry live-proof verifier
+- natural English demo video draft
 
 Current limitation:
 
@@ -34,4 +37,5 @@ Next:
 - route one smoke request
 - save sanitized response proof
 - capture dashboard proof
-- record the demo video
+- listen to and approve the current demo video draft
+- finalize the hosted public video before Devpost submission
