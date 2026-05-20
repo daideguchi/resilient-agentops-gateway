@@ -10,6 +10,8 @@ Agents do not just need better prompts. They need a visible gateway that shows f
 
 Resilient AgentOps Gateway is a dashboard for understanding how an AI workflow behaved when the first model/tool path was not good enough.
 
+It is designed to make the TrueFoundry-style operations story visible: routing, fallback, governance, evidence, cost, and resume instructions.
+
 ## Live Demo
 
 GitHub Pages target:
@@ -29,6 +31,7 @@ Expected:
 
 ```text
 gateway_verify_ok
+track_fit_items=4
 gateway_claim_boundary_ok
 ```
 

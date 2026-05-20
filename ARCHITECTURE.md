@@ -7,11 +7,13 @@ index.html
   static gateway dashboard
   deterministic sample event model
   route/fallback/cost/risk/approval cards
+  TrueFoundry challenge-fit summary
   timeline and final handoff packet
 
 scripts/verify_gateway.mjs
   opens the app in Chrome
   verifies headline, timeline rows, fallback row, and claim boundary
+  verifies challenge-fit rows
   captures screenshot
 
 scripts/verify_claim_boundary.py

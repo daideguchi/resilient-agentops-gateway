@@ -139,10 +139,61 @@
       overflow: auto;
     }
 
+    .fit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .fit-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+      padding: 12px;
+      min-height: 116px;
+    }
+
+    .fit-item b {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .fit-item p {
+      margin: 0;
+      font-size: 13px;
+    }
+
     @media (max-width: 860px) {
       header { flex-direction: column; }
-      .metrics, .grid { grid-template-columns: 1fr; }
-      table { font-size: 13px; }
+      .metrics, .grid, .fit-grid { grid-template-columns: 1fr; }
+      section { min-width: 0; }
+      table, thead, tbody, tr, th, td { display: block; }
+      thead { display: none; }
+      tr {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfdff;
+        margin-top: 10px;
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: 92px minmax(0, 1fr);
+        gap: 8px;
+        font-size: 13px;
+        word-break: break-word;
+      }
+      td::before {
+        content: attr(data-label);
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+      td:last-child { border-bottom: 0; }
     }
   </style>
 </head>
@@ -161,6 +212,12 @@
       <div class="metric"><strong id="approvalCount">2</strong><span>human approvals</span></div>
       <div class="metric"><strong id="costTotal">$0.07</strong><span>estimated cost</span></div>
       <div class="metric"><strong id="blockedCount">1</strong><span>blocked actions</span></div>
+    </section>
+
+    <section>
+      <h2>TrueFoundry Challenge Fit</h2>
+      <p>This product is not another final-answer chatbot. It shows the operational layer around resilient agents: routing, fallback, policy stops, cost, evidence, and resume instructions.</p>
+      <div class="fit-grid" id="fitGrid"></div>
     </section>
 
     <div class="grid">
@@ -203,6 +260,13 @@
       { step: 'summary', primary: 'fast-model', fallback: 'reasoning-model', status: 'fallback_used', risk: 'unsupported claim', approval: 'required', cost: 0.032, evidence: 'case-summary' }
     ];
 
+    const fit = [
+      { name: 'Routing', note: 'A stable operations view shows which path the agent tried first.' },
+      { name: 'Fallback', note: 'Fallback use is visible instead of hidden inside logs or a final answer.' },
+      { name: 'Governance', note: 'Risky actions stop at a human approval checkpoint.' },
+      { name: 'Evidence', note: 'The handoff packet tells the next human or agent what proof exists.' }
+    ];
+
     function statusBadge(status) {
       const cls = status === 'ok' ? 'green' : status === 'blocked' ? 'red' : 'amber';
       return `<span class="badge ${cls}">${status}</span>`;
@@ -210,18 +274,25 @@
 
     document.getElementById('timeline').innerHTML = events.map((event) => `
       <tr>
-        <td>${event.step}</td>
-        <td>${event.primary}</td>
-        <td>${event.fallback}</td>
-        <td>${statusBadge(event.status)}</td>
-        <td>${event.risk}</td>
-        <td>${event.approval}</td>
+        <td data-label="Step">${event.step}</td>
+        <td data-label="Primary">${event.primary}</td>
+        <td data-label="Fallback">${event.fallback}</td>
+        <td data-label="Status">${statusBadge(event.status)}</td>
+        <td data-label="Risk">${event.risk}</td>
+        <td data-label="Approval">${event.approval}</td>
       </tr>
+    `).join('');
+    document.getElementById('fitGrid').innerHTML = fit.map((item) => `
+      <div class="fit-item">
+        <b>${item.name}</b>
+        <p>${item.note}</p>
+      </div>
     `).join('');
 
     const packet = {
       product: 'Resilient AgentOps Gateway',
       track: 'DevNetwork AI+ML / TrueFoundry resilient agents',
+      track_fit: fit,
       fallback_count: events.filter((event) => event.status === 'fallback_used').length,
       blocked_actions: events.filter((event) => event.status === 'blocked').length,
       approvals_required: events.filter((event) => event.approval === 'required').length,

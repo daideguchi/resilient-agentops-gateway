@@ -23,6 +23,7 @@ Resilient AgentOps Gateway turns agent execution into a reviewable operations vi
 - human approval checkpoint
 - evidence reference
 - final handoff status
+- TrueFoundry challenge-fit summary for routing, fallback, governance, and evidence
 
 ## DevNetwork Fit
 
@@ -33,6 +34,7 @@ The best fit is the TrueFoundry resilient-agents challenge because the product i
 ```text
 node scripts/verify_gateway.mjs
 gateway_verify_ok
+track_fit_items=4
 python3 scripts/verify_claim_boundary.py
 gateway_claim_boundary_ok
 ```
