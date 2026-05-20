@@ -14,6 +14,16 @@ It is designed to make the TrueFoundry-style operations story visible: routing, 
 
 The latest surface also includes an explicit decision contract and evidence receipts, so a reviewer can see when the gateway retries, when it falls back, when it pauses for human approval, and which proof is still simulated versus blocked.
 
+## Judge Quick Read
+
+Who it helps: teams running AI agents that need reliable operations, not just impressive final answers.
+
+The problem: when an agent fails, retries, changes model, spends money, or needs human approval, that story often disappears inside logs.
+
+How Resilient AgentOps Gateway solves it: the cockpit shows route decisions, fallback, risk, cost, approval gates, evidence receipts, and the handoff packet in one reviewable surface.
+
+What is proven now: the public app, screenshots, demo video draft, verifiers, decision contract, and evidence receipts are live. TrueFoundry execution is intentionally not claimed until a real Gateway response and dashboard proof exist.
+
 ## Live Demo
 
 GitHub Pages target:
