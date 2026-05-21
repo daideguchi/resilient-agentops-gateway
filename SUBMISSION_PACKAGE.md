@@ -25,7 +25,7 @@ Resilient AgentOps Gateway turns agent execution into a reviewable operations vi
 - final handoff status
 - decision contract for retry, fallback, approval, and stop rules
 - Gateway I/O contract for request, route decision, response, and audit receipt
-- evidence receipts that separate simulated proof from blocked live TrueFoundry proof
+- evidence receipts that separate simulated product workflow from attached live TrueFoundry proof
 - TrueFoundry challenge-fit summary for routing, fallback, governance, and evidence
 
 ## DevNetwork Fit
@@ -58,7 +58,7 @@ media/resilient-agentops-gateway-full.png
 media/resilient-agentops-gateway-pages-full.png
 ```
 
-Demo video: pending until the static walkthrough and any live TrueFoundry proof boundaries are final.
+Demo video: draft walkthrough. Live TrueFoundry proof is attached separately as screenshot + sanitized response JSON.
 
 Demo video draft:
 
@@ -67,14 +67,17 @@ media/resilient-agentops-gateway-demo.mp4
 https://raw.githubusercontent.com/daideguchi/resilient-agentops-gateway/main/media/resilient-agentops-gateway-demo.mp4
 ```
 
-This draft does not claim live TrueFoundry Gateway execution.
+The repository now contains live TrueFoundry Gateway proof files:
+
+```text
+media/truefoundry-gateway-proof.png
+media/truefoundry-gateway-response.json
+```
 
 ## Claim Boundary
 
-TrueFoundry has not been installed or called yet. This package does not claim live TrueFoundry execution.
+The product demo timeline is simulated. The live integration claim is intentionally narrow: one TrueFoundry Gateway chat-completion request succeeded with a sanitized 200 response, and the configured model account is visible in the dashboard screenshot.
 
 ## Integration Plan
 
-The next live step is tracked in `docs/TRUEFOUNDRY_INTEGRATION_PLAN.md`: create a real TrueFoundry Gateway workspace/key, route one sample request through a virtual model, save dashboard or response proof under `media/`, then update the claim boundary.
-
-`scripts/truefoundry_smoke_request.py` and `scripts/verify_truefoundry_live.py` are present for that step, but the live verifier is expected to fail until real TrueFoundry proof exists.
+The live step in `docs/TRUEFOUNDRY_INTEGRATION_PLAN.md` is complete. `scripts/verify_truefoundry_live.py` verifies the sanitized response JSON and screenshot without exposing API keys.

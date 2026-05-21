@@ -205,7 +205,7 @@
         <h1>Resilient AgentOps Gateway</h1>
         <p>A review cockpit for model fallback, risk, cost, approval, and evidence.</p>
       </div>
-      <span class="badge amber">TrueFoundry integration pending</span>
+      <span class="badge green">TrueFoundry live gateway verified</span>
     </header>
 
     <section class="metrics" aria-label="Gateway metrics">
@@ -261,13 +261,13 @@
 
     <section>
       <h2>Evidence Receipts</h2>
-      <p>Each receipt explains what can be replayed, what is still simulated, and what must be replaced by live TrueFoundry proof.</p>
+      <p>Each receipt explains what can be replayed, which decisions are simulated, and which live TrueFoundry proof is attached.</p>
       <div class="fit-grid" id="receiptGrid"></div>
     </section>
 
     <section>
       <h2>Claim Boundary</h2>
-      <p id="boundary">This MVP is shaped for a TrueFoundry resilient-agents submission, but no live TrueFoundry Gateway execution is claimed yet.</p>
+      <p id="boundary">One TrueFoundry Gateway request has been executed and verified with sanitized response metadata plus dashboard proof. The timeline remains a product demo dataset.</p>
     </section>
   </main>
 
@@ -297,7 +297,7 @@
       { name: 'Route receipt', status: 'simulated', note: 'Primary and fallback paths are visible in the timeline.' },
       { name: 'Policy receipt', status: 'attached', note: 'Blocked refund action has a named stop rule and approval owner.' },
       { name: 'Cost receipt', status: 'estimated', note: 'Per-step cost is included so operators can review spend impact.' },
-      { name: 'TrueFoundry receipt', status: 'blocked', note: 'Replace with sanitized live Gateway response before claiming execution.' }
+      { name: 'TrueFoundry receipt', status: 'attached', note: 'Sanitized live Gateway response and dashboard proof are stored under media/.' }
     ];
 
     const contract = [
@@ -363,8 +363,8 @@
       approvals_required: events.filter((event) => event.approval === 'required').length,
       estimated_cost_usd: events.reduce((sum, event) => sum + event.cost, 0).toFixed(3),
       resume_instruction: 'Review blocked refund action before any customer-facing action.',
-      next_live_proof_step: 'Run one small request through a real TrueFoundry virtual model and attach sanitized response plus dashboard proof.',
-      claim_boundary: 'No live TrueFoundry Gateway execution is claimed yet.'
+      next_live_proof_step: 'Review media/truefoundry-gateway-response.json and media/truefoundry-gateway-proof.png.',
+      claim_boundary: 'Live TrueFoundry Gateway response is verified by sanitized response metadata and dashboard proof.'
     };
 
     document.getElementById('fallbackCount').textContent = String(packet.fallback_count);

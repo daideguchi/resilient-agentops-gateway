@@ -2,7 +2,7 @@
 
 Resilient AgentOps Gateway should make every important route decision replayable.
 
-This document defines the minimum request, route decision, response, and audit receipt shape. It is designed to be replaced by live TrueFoundry Gateway proof once a real workspace is available.
+This document defines the minimum request, route decision, response, and audit receipt shape. The product demo timeline is simulated, while the repository now includes one attached live TrueFoundry Gateway response proof.
 
 ## Request
 
@@ -49,13 +49,13 @@ This document defines the minimum request, route decision, response, and audit r
   "route_receipt": "primary and fallback paths are visible",
   "policy_receipt": "blocked action names the stop rule",
   "cost_receipt": "estimated cost is recorded",
-  "proof_boundary": "replace simulated receipt with real TrueFoundry response before claiming live execution"
+  "proof_boundary": "live TrueFoundry response proof is attached; demo timeline remains simulated"
 }
 ```
 
 ## Stoplines
 
-- Do not claim live TrueFoundry execution from this static contract.
+- Do not claim the static demo timeline itself is a production TrueFoundry run.
 - Do not commit a TrueFoundry API key.
 - Do not store private customer data in a public receipt.
 - Do not remove the human approval gate for customer-facing or money-moving actions.

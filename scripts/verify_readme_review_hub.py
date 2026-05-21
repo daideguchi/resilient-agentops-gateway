@@ -26,10 +26,13 @@ REQUIRED_MARKERS = [
     "python3 scripts/verify_no_secrets.py",
     "python3 scripts/verify_claim_boundary.py",
     "python3 scripts/verify_demo_video.py",
+    "python3 scripts/verify_truefoundry_live.py",
     "gateway_no_secrets_ok",
+    "truefoundry_live_proof_ok",
     "contract_items=4",
     "Gateway I/O contract",
-    "no live TrueFoundry Gateway request has been made yet",
+    "one live TrueFoundry Gateway response",
+    "media/truefoundry-gateway-response.json",
 ]
 
 

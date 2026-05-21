@@ -35,12 +35,19 @@ def main() -> int:
         else:
             if data.get("sanitized") is not True:
                 failures.append("response proof must set sanitized=true")
-            if data.get("gateway_base_url") != "https://gateway.truefoundry.ai":
-                failures.append("response proof must use https://gateway.truefoundry.ai")
-            if data.get("endpoint_path") not in {"/chat/completions", "/v1/chat/completions"}:
+            base_url = data.get("gateway_base_url", "")
+            if not (base_url.startswith("https://") and "truefoundry" in base_url):
+                failures.append("response proof must use a TrueFoundry HTTPS Gateway base URL")
+            if data.get("endpoint_path") not in {
+                "/chat/completions",
+                "/v1/chat/completions",
+                "/api/inference/openai/chat/completions",
+            }:
                 failures.append("response proof endpoint_path must be a TrueFoundry OpenAI-compatible chat endpoint")
             if not data.get("response_id"):
                 failures.append("response proof missing response_id")
+            if "TrueFoundry gateway smoke OK" not in str(data.get("first_choice_text", "")):
+                failures.append("response proof missing expected smoke response text")
 
     if failures:
         print("truefoundry_live_proof_missing")

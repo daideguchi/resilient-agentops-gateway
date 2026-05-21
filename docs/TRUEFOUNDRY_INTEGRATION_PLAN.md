@@ -2,54 +2,39 @@
 
 ## Current Status
 
-TrueFoundry Gateway has not been installed or called yet.
+Live proof is complete.
 
-Resilient AgentOps Gateway is currently a public MVP that demonstrates the review surface a builder needs around model routing, fallback, cost, risk, approval, evidence, and handoff. Prize or challenge claims should not say a live TrueFoundry Gateway execution happened until real Gateway evidence exists.
+Resilient AgentOps Gateway now includes a configured TrueFoundry self-hosted model account and one verified OpenAI-compatible Gateway chat-completion response. The product timeline remains a demo scenario, but the Gateway integration proof is real and stored as sanitized artifacts under `media/`.
 
 ## What We Know From Public Sources
 
 - TrueFoundry describes AI Gateway as the proxy layer between applications and LLM providers / MCP servers, with governance and observability.
 - TrueFoundry virtual models support routing across target models with load balancing, failover, retries, and fallback behavior behind one stable model name.
 - TrueFoundry documents priority-based routing, latency-based routing, unhealthy target handling, and dashboard visibility for target traffic.
-- TrueFoundry documents a global Gateway endpoint at `https://gateway.truefoundry.ai` for AI Model Gateway and MCP Gateway traffic.
-- TrueFoundry's OpenAI-compatible chat route is `POST /chat/completions` under the Gateway base URL. The local smoke script keeps the endpoint path overridable, but defaults to the current documented path.
+- TrueFoundry documents API keys as Personal Access Tokens or Virtual Account tokens, passed as bearer tokens.
+- TrueFoundry's OpenAI-compatible chat route is `POST /chat/completions` under the Gateway base URL. Hosted control planes can also use a tenant base such as `https://<tenant>.truefoundry.cloud/api/llm`.
 
 Source links:
 
-- https://www.truefoundry.com/docs/ai-gateway/intro-to-llm-gateway
-- https://www.truefoundry.com/docs/ai-gateway/virtual-model
-- https://www.truefoundry.com/docs/ai-gateway/globally-distributed-saas
+- https://www.truefoundry.com/docs/gateway
+- https://www.truefoundry.com/docs/generating-truefoundry-api-keys
+- https://www.truefoundry.com/docs/ai-gateway/chat-completions-overview
 
-## Required Human / Account Step
+## Completed Integration Slot
 
-Install or access a real TrueFoundry AI Gateway workspace and create a project-specific API key.
-
-Do not:
-
-- paste a fake Gateway key
-- claim a live Gateway call from the static demo
-- use another project account without permission
-- submit a live-integration claim before evidence exists
-
-## Integration Slot
-
-When the real workspace is available:
-
-1. Create a virtual model with at least one primary target and one fallback target.
-2. Route one small sample chat request through TrueFoundry Gateway.
-3. Capture the response metadata or dashboard trace that proves which route was used.
-4. Save proof under `media/`, for example `media/truefoundry-gateway-proof.png`.
-5. Save a sanitized request / response artifact if allowed, for example `media/truefoundry-gateway-response.json`.
-6. Update README, submission package, and the app packet from "not called yet" to the real verified status.
+1. Created a TrueFoundry tenant and configured a self-hosted OpenAI-compatible model account.
+2. Routed one small sample chat request through TrueFoundry Gateway.
+3. Captured sanitized response metadata at `media/truefoundry-gateway-response.json`.
+4. Captured a public-safe dashboard proof at `media/truefoundry-gateway-proof.png`.
+5. Updated README, submission package, and the app packet from "not called yet" to the real verified status.
 
 ## Smoke Request
 
 ```bash
 export TRUEFOUNDRY_API_KEY="..."
-export TRUEFOUNDRY_MODEL="..."
-export TRUEFOUNDRY_BASE_URL="https://gateway.truefoundry.ai"
-# Optional override only if the workspace docs show a different OpenAI-compatible path:
-# export TRUEFOUNDRY_ENDPOINT_PATH="/chat/completions"
+export TRUEFOUNDRY_MODEL="fireworks-openai-compatible/Vertex-Gemini-Bridge"
+export TRUEFOUNDRY_BASE_URL="https://<tenant>.truefoundry.cloud/api/llm"
+export TRUEFOUNDRY_ENDPOINT_PATH="/chat/completions"
 python3 scripts/truefoundry_smoke_request.py
 ```
 
@@ -61,4 +46,4 @@ The smoke script writes only sanitized response metadata to `media/truefoundry-g
 python3 scripts/verify_truefoundry_live.py
 ```
 
-This verifier is intentionally strict. It should fail until both the sanitized response proof and the real dashboard screenshot exist.
+This verifier is intentionally strict. It passes only when both the sanitized response proof and the real dashboard screenshot exist.

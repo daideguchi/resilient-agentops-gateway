@@ -17,20 +17,20 @@ scripts/verify_gateway.mjs
   verifies headline, timeline rows, fallback row, and claim boundary
   verifies challenge-fit rows
   verifies decision-contract rows
-  verifies evidence receipts, including blocked live TrueFoundry receipt
+  verifies evidence receipts, including attached live TrueFoundry receipt
   captures screenshot
 
 scripts/verify_claim_boundary.py
   fails if docs claim live TrueFoundry Gateway proof before a real proof file exists
 
 scripts/truefoundry_smoke_request.py
-  future live smoke test
+  live smoke test
   uses TRUEFOUNDRY_API_KEY and TRUEFOUNDRY_MODEL from env
   writes sanitized response metadata only
 
 scripts/verify_truefoundry_live.py
-  future live-proof gate
-  fails until sanitized response proof and dashboard screenshot both exist
+  live-proof gate
+  requires sanitized response proof and dashboard screenshot
 ```
 
 ## Event Shape
@@ -64,16 +64,16 @@ scripts/verify_truefoundry_live.py
 ```json
 {
   "name": "TrueFoundry receipt",
-  "status": "blocked",
-  "note": "Replace with sanitized live Gateway response before claiming execution."
+  "status": "attached",
+  "note": "Sanitized live Gateway response and dashboard proof are stored under media/."
 }
 ```
 
-## Next TrueFoundry Step
+## TrueFoundry Proof
 
-- install or access TrueFoundry Gateway
-- route one real sample LLM call through it
-- export request/response/fallback proof
-- update README and verifier
+- TrueFoundry self-hosted model account is configured
+- one Gateway chat-completion response is saved as sanitized JSON
+- dashboard proof is saved as a public-safe screenshot
+- runtime keys remain outside the repository
 
 Detailed account and proof steps are in `docs/TRUEFOUNDRY_INTEGRATION_PLAN.md`.

@@ -37,7 +37,7 @@ try {
     throw new Error(`gateway I/O contract missing: ${contractItems}`);
   }
   const packet = JSON.parse(await page.locator('#packet').innerText());
-  if (packet.claim_boundary !== 'No live TrueFoundry Gateway execution is claimed yet.') {
+  if (packet.claim_boundary !== 'Live TrueFoundry Gateway response is verified by sanitized response metadata and dashboard proof.') {
     throw new Error('claim boundary mismatch');
   }
   if (!Array.isArray(packet.track_fit) || packet.track_fit.length < 4) {
@@ -49,8 +49,8 @@ try {
   if (!Array.isArray(packet.gateway_io_contract) || !packet.gateway_io_contract.some((item) => item.name === 'Audit receipt')) {
     throw new Error('gateway I/O contract packet missing');
   }
-  if (!Array.isArray(packet.evidence_receipts) || !packet.evidence_receipts.some((item) => item.name === 'TrueFoundry receipt' && item.status === 'blocked')) {
-    throw new Error('TrueFoundry evidence boundary missing');
+  if (!Array.isArray(packet.evidence_receipts) || !packet.evidence_receipts.some((item) => item.name === 'TrueFoundry receipt' && item.status === 'attached')) {
+    throw new Error('TrueFoundry live evidence receipt missing');
   }
   await page.screenshot({ path: path.join(outDir, 'resilient-agentops-gateway-full.png'), fullPage: true });
   const bytes = fs.statSync(path.join(outDir, 'resilient-agentops-gateway-full.png')).size;

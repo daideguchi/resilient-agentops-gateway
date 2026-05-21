@@ -21,24 +21,24 @@ Deepened the product:
 - mobile-safe timeline cards
 - decision contract for retry, fallback, approval, and stop rules
 - Gateway I/O contract for replayable request, route, response, and audit receipt
-- evidence receipts that separate simulated evidence from required live proof
+- evidence receipts that separate simulated workflow from attached live proof
 - live Pages screenshot proof
 - no-secrets verifier for the public repo
 - README review-hub verifier for public submission completeness
 - claim-boundary verifier
-- future TrueFoundry smoke request script
-- future TrueFoundry live-proof verifier
+- TrueFoundry smoke request script
+- TrueFoundry live-proof verifier
 - natural English demo video draft
 
-Current limitation:
+2026-05-21 live proof:
 
-- TrueFoundry Gateway has not been installed or called yet.
+- created TrueFoundry tenant and self-hosted model account
+- bridged a local Vertex Gemini model through an OpenAI-compatible endpoint
+- validated the model in TrueFoundry
+- ran one TrueFoundry Gateway chat-completion smoke request
+- saved sanitized response metadata and dashboard proof under `media/`
 
 Next:
 
-- create or access real TrueFoundry Gateway workspace
-- route one smoke request
-- save sanitized response proof
-- capture dashboard proof
 - listen to and approve the current demo video draft
 - finalize the hosted public video before Devpost submission

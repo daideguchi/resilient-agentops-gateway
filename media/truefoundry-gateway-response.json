@@ -1,0 +1,19 @@
+{
+  "sanitized": true,
+  "claim_boundary": "live_truefoundry_gateway_execution_verified_with_sanitized_response_and_dashboard_proof",
+  "checked_at_utc": "2026-05-20T23:59:56.809648+00:00",
+  "gateway_base_url": "https://ddshiproom26.truefoundry.cloud/api/llm",
+  "endpoint_path": "/chat/completions",
+  "model": "fireworks-openai-compatible/Vertex-Gemini-Bridge",
+  "status": 200,
+  "response_id": "chatcmpl-bdcaf7df-d785-4b6e-a42c-2f2cd77f515e",
+  "object": "chat.completion",
+  "created": 1779321596,
+  "usage": {
+    "prompt_tokens": 27,
+    "completion_tokens": 6,
+    "total_tokens": 65
+  },
+  "first_choice_finish_reason": "stop",
+  "first_choice_text": "TrueFoundry gateway smoke OK"
+}

@@ -29,7 +29,7 @@ Show TrueFoundry Challenge Fit and Decision Contract.
 Narration:
 
 ```text
-The product is built around the TrueFoundry-style gateway story: routing, fallback, governance, and evidence. The decision contract makes the operating rules explicit: retry, fallback, approval, or stop. It is not claiming a live Gateway call yet. It is showing the cockpit that a real resilient-agent workflow needs.
+The product is built around the TrueFoundry gateway story: routing, fallback, governance, and evidence. The decision contract makes the operating rules explicit: retry, fallback, approval, or stop. The demo timeline is simulated, and the repository also includes one narrow live Gateway smoke proof.
 ```
 
 ## 0:55 - 1:20
@@ -59,5 +59,5 @@ Close on the boundary.
 Narration:
 
 ```text
-The next step is one real TrueFoundry Gateway smoke request and dashboard proof. Until then, this project keeps the claim boundary visible and machine-checkable.
+The final boundary is explicit: the workflow timeline is a product scenario, while the live TrueFoundry proof is a small verified Gateway smoke request with sanitized response metadata and dashboard proof.
 ```
