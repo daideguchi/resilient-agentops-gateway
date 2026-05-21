@@ -63,9 +63,9 @@ Each timeline row explains which model or tool path was tried, whether fallback 
 
 In this example, a risky refund action is blocked. The system does not hide that behind a polished final answer.
 
-The handoff packet and evidence receipts let the next human or future agent resume without guessing. They include fallback count, blocked actions, approvals, cost, decision rules, simulated proof, blocked proof, and the exact claim boundary.
+The handoff packet and evidence receipts let the next human or future agent resume without guessing. They include fallback count, blocked actions, approvals, cost, decision rules, simulated workflow evidence, and the exact claim boundary.
 
-The next step is one real TrueFoundry Gateway smoke request and dashboard proof. Until then, the project keeps the boundary visible and machine-checkable.
+The final boundary is explicit. The workflow timeline is a product scenario, while the repository also includes one verified TrueFoundry Gateway smoke response with sanitized response metadata and dashboard proof.
 TEXT
 
 "$EDGE_TTS_PYTHON" -m edge_tts \
@@ -111,9 +111,9 @@ make_screenshot_slide "$ROOT/media/resilient-agentops-gateway-full.png" \
   "$TMP_DIR/slide-5.png"
 
 make_text_slide \
-  "Honest Submission Boundary" \
-  "Public MVP is verified. Live TrueFoundry Gateway proof is still required." \
-  "The live verifier should fail until response proof and dashboard proof exist." \
+  "Verified Submission Boundary" \
+  "Public MVP is verified. TrueFoundry Gateway proof is attached." \
+  "The demo timeline is simulated; one live Gateway smoke response is verified." \
   "$TMP_DIR/slide-6.png"
 
 ffmpeg -y \
