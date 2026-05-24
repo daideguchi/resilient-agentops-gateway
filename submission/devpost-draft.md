@@ -49,7 +49,7 @@ HTML, CSS, JavaScript, Playwright, GitHub Pages, Python verification scripts, Ga
 ## What Is Still Needed Before Final Submission
 
 - Listen to and approve the generated demo video draft, then upload the final public video if Devpost requires a hosted player.
-- DD must approve legal terms and final submission.
+- The project lead must approve legal terms and final submission.
 
 ## Claim Boundary
 
